@@ -1,8 +1,10 @@
 {
   "name": "helm-apply",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "helm-apply",
+  "bin": {
+    "helm-apply": "bin/helm-apply.js"
+  }  
   "scripts": {
     "test": "echo \"Warning: no test specified\" && exit 0"
   },
