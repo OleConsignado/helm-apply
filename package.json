@@ -8,6 +8,14 @@
   },
   "author": "Matheus Neder",
   "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OleConsignado/helm-apply.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OleConsignado/helm-apply/issues"
+  },
+  "homepage": "https://github.com/OleConsignado/helm-apply#readme",  
   "dependencies": {
     "command-line-args": "^5.0.2",
     "js-yaml": "^3.12.0",
