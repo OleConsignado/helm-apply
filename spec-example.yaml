@@ -1,0 +1,8 @@
+globalValues:
+  parentDomain: k8s01.oleconsignado.com.br
+  dockerRegistrationSecret: ole-docker-reg
+apps:
+- name: segurancaapi
+  source: $/SegurancaAPI/trunk/SegurancaAPI.Service/Kubernetes.Helm,C17583
+  values:
+    cpuLimit: 500m

@@ -1,0 +1,17 @@
+{
+  "name": "helm-apply",
+  "version": "1.0.0",
+  "description": "",
+  "main": "helm-apply",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matheus Neder",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "command-line-args": "^5.0.2",
+    "js-yaml": "^3.12.0",
+    "vcs-getter": "^1.0.9",
+    "vcs-hosted-k8s-helm-installer": "^2.0.2"
+  }
+}

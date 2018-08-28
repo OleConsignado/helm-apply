@@ -1,0 +1,16 @@
+# example for ~/.helm-apply.yaml
+git:
+  localPathBase: "/home/matheus/.helm-apply/git"
+  credentials:
+    https://oletecnologia.visualstudio.com: XXX
+tfs:
+  tfCommand: "/opt/TEE-CLC-14.123.1/tf"
+  collections:
+  - url: https://oletecnologia.visualstudio.com
+    user: _
+    passwd: XXX
+    workspace:
+      name: helm-apply-test
+      localPathBase: "/home/matheus/.helm-apply/tfs"
+    isDefaultCollection: true
+    
