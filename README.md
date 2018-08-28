@@ -17,11 +17,11 @@ $ npm install helm-apply -g
 ```
 
 Create a file named `.helm-apply.yaml` in your home directory with contents similar to:
-```
+```yaml
 git:
   localPathBase: "/home/matheus/.helm-apply/git"
   credentials:
-    https://oletecnologia.visualstudio.com: XXX
+    https://xxx.visualstudio.com: XXX
 tfs:
   tfCommand: "/opt/TEE-CLC-14.123.1/tf"
   collections:
@@ -37,7 +37,7 @@ tfs:
 ## Usage
 
 ```
-helm-apply --namespace=target-namespace --spec=specs-file.yaml
+$ helm-apply --namespace=target-namespace --spec=specs-file.yaml
 ```
 
 `specs-file.yaml` should looks like:
