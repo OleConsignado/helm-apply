@@ -17,7 +17,7 @@ $ npm install helm-apply -g
 ```
 
 Create a file named `.helm-apply.yaml` in your home directory with contents similar to:
-```
+```yaml
 git:
   localPathBase: "/home/matheus/.helm-apply/git"
   credentials:
