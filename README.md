@@ -21,7 +21,7 @@ Create a file named `.helm-apply.yaml` in your home directory with contents simi
 git:
   localPathBase: "/home/matheus/.helm-apply/git"
   credentials:
-    https://oletecnologia.visualstudio.com: XXX
+    https://xxx.visualstudio.com: XXX
 tfs:
   tfCommand: "/opt/TEE-CLC-14.123.1/tf"
   collections:
