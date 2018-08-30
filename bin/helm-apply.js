@@ -9,9 +9,11 @@ const os = require('os');
 var path = require('path');
 
 const optionDefinitions = [
-	{ name: 'namespace', alias: 'n', type: String },
-	{ name: 'spec', alias: 's', type: String },
-	{ name: 'conf', alias: 'c', type: String }
+	{ name: 'namespace', type: String },
+	{ name: 'spec', type: String },
+	{ name: 'conf', type: String },
+	{ name: 'app', type: String },
+	{ name: 'all', type: Boolean }
 ];
 
 const options = commandLineArgs(optionDefinitions);
@@ -40,6 +42,12 @@ function getDefaultTfsCollection(vcsConf) {
 		"least one item under tfs.collections with property 'isDefaultCollection' with value of 'true'");
 }
 
+async function applyApp(app, defaultTfsCollection) {
+	console.info(`>> ${app.name} (${app.source})`);
+	app.source = completeSource(app.source, defaultTfsCollection);
+	await installer.installOrUpgrade(app);
+}
+
 async function main() {
 
 	if(!options.namespace) {
@@ -48,6 +56,10 @@ async function main() {
 
 	if(!options.spec) {
 		throw new Error("Missing parameter spec (--spec).");
+	}
+
+	if(!options.all && !options.app) {
+		throw new Error("Missing parameter all or app (--all, --app=appname).");	
 	}
 
 	let confFilename = path.join(os.homedir(), '.helm-apply.yaml');
@@ -76,16 +88,23 @@ async function main() {
 		});
 
 		try {
-			for(let i = 0; i < spec.apps.length; i++) {
-				try {
-					var app = spec.apps[i];
-					console.info(`>> ${app.name} (${app.source})`);
-					app.source = completeSource(app.source, defaultTfsCollection);
-					await installer.installOrUpgrade(app);
-				} catch(e) {
-					console.error(`** ERROR while applying ${app.name}`);
-					console.error(e);
+			if(options.all) {
+				for(let i = 0; i < spec.apps.length; i++) {
+					try {
+						await applyApp(spec.apps[i], defaultTfsCollection);
+					} catch(e) {
+						console.error(`** ERROR while applying ${app.name}`);
+						console.error(e);
+					}
 				}
+			} else {
+				var app = spec.apps.find(a => a.name == options.app);
+
+				if(!app) {
+					throw new Error(`helm-apply -> Could not find app '{options.app}'`);
+				}
+
+				await applyApp(app, defaultTfsCollection);
 			}
 		} finally {
 			installer.dispose();
