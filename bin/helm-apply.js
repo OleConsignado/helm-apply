@@ -42,12 +42,6 @@ function getDefaultTfsCollection(vcsConf) {
 		"least one item under tfs.collections with property 'isDefaultCollection' with value of 'true'");
 }
 
-async function applyApp(app, defaultTfsCollection) {
-	console.info(`>> ${app.name} (${app.source})`);
-	app.source = completeSource(app.source, defaultTfsCollection);
-	await installer.installOrUpgrade(app);
-}
-
 async function main() {
 
 	if(!options.namespace) {
@@ -91,7 +85,10 @@ async function main() {
 			if(options.all) {
 				for(let i = 0; i < spec.apps.length; i++) {
 					try {
-						await applyApp(spec.apps[i], defaultTfsCollection);
+						var app = spec.apps[i];
+						console.info(`>> ${app.name} (${app.source})`);
+						app.source = completeSource(app.source, defaultTfsCollection);
+						await installer.installOrUpgrade(app);
 					} catch(e) {
 						console.error(`** ERROR while applying ${app.name}`);
 						console.error(e);
@@ -99,12 +96,14 @@ async function main() {
 				}
 			} else {
 				var app = spec.apps.find(a => a.name == options.app);
-
+				console.info(`>> ${app.name} (${app.source})`);
+				
 				if(!app) {
 					throw new Error(`helm-apply -> Could not find app '{options.app}'`);
 				}
-
-				await applyApp(app, defaultTfsCollection);
+				
+				app.source = completeSource(app.source, defaultTfsCollection);
+				await installer.installOrUpgrade(app);
 			}
 		} finally {
 			installer.dispose();
