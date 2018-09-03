@@ -42,6 +42,17 @@ function getDefaultTfsCollection(vcsConf) {
 		"least one item under tfs.collections with property 'isDefaultCollection' with value of 'true'");
 }
 
+function addNamespaceSegmentToLocalPathsAndTfsWorkspace(vcsConf) {
+	vcsConf.git.localPathBase = path.join(vcsConf.git.localPathBase, options.namespace);
+
+	for(let i = 0; i < vcsConf.tfs.collections; i++) {
+		var collection = vcsConf.tfs.collections[i];
+		collection.workspace.name += `-${options.namespace}`;
+		collection.workspace.localPathBase = path
+			.join(collection.workspace.localPathBase, options.namespace);
+	}
+}
+
 async function main() {
 
 	if(!options.namespace) {
@@ -68,6 +79,8 @@ async function main() {
 	} else {
 		throw new Error(`helm-apply -> Could not read '${confFilename}'.`);
 	}
+
+	addNamespaceSegmentToLocalPathsAndTfsWorkspace(vcsConf);
 
 	const defaultTfsCollection = getDefaultTfsCollection(vcsConf);
 
