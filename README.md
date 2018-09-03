@@ -47,7 +47,7 @@ globalValues:
   dockerRegistrationSecret: docker-reg
 apps:
 - name: segurancaapi
-  source: $/MyProj/trunk/MyProj.Service/Kubernetes.Helm,C17583
+  source: $/MyProj/trunk/MyProj.Service/Kubernetes.Helm;C17583
   values:
     cpuLimit: 500m
 ```
