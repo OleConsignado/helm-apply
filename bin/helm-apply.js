@@ -45,7 +45,7 @@ function getDefaultTfsCollection(vcsConf) {
 function addNamespaceSegmentToLocalPathsAndTfsWorkspace(vcsConf) {
 	vcsConf.git.localPathBase = path.join(vcsConf.git.localPathBase, options.namespace);
 
-	for(let i = 0; i < vcsConf.tfs.collections; i++) {
+	for(let i = 0; i < vcsConf.tfs.collections.length; i++) {
 		var collection = vcsConf.tfs.collections[i];
 		collection.workspace.name += `-${options.namespace}`;
 		collection.workspace.localPathBase = path
