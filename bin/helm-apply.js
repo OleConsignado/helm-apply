@@ -13,7 +13,8 @@ const optionDefinitions = [
 	{ name: 'spec', type: String },
 	{ name: 'conf', type: String },
 	{ name: 'app', type: String },
-	{ name: 'all', type: Boolean }
+	{ name: 'all', type: Boolean },
+	{ name: 'force', type: Boolean }
 ];
 
 const options = commandLineArgs(optionDefinitions);
@@ -101,7 +102,7 @@ async function main() {
 						var app = spec.apps[i];
 						console.info(`>> ${app.name} (${app.source})`);
 						app.source = completeSource(app.source, defaultTfsCollection);
-						await installer.installOrUpgrade(app);
+						await installer.installOrUpgrade(app, options.force);
 					} catch(e) {
 						console.error(`** ERROR while applying ${app.name}`);
 						console.error(e);
@@ -116,7 +117,7 @@ async function main() {
 				}
 				
 				app.source = completeSource(app.source, defaultTfsCollection);
-				await installer.installOrUpgrade(app);
+				await installer.installOrUpgrade(app, options.force);
 			}
 		} finally {
 			installer.dispose();
