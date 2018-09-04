@@ -37,7 +37,7 @@ tfs:
 ## Usage
 
 ```
-$ helm-apply --namespace=target-namespace --spec=specs-file.yaml --all|--app=app-name
+$ helm-apply --namespace=target-namespace --spec=specs-file.yaml --all|--app=app-name [--force]
 ```
 
 `specs-file.yaml` should looks like:
