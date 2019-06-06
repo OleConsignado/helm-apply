@@ -1,6 +1,6 @@
 {
   "name": "helm-apply",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "bin": {
     "helm-apply": "bin/helm-apply.js"
@@ -17,10 +17,10 @@
   "bugs": {
     "url": "https://github.com/OleConsignado/helm-apply/issues"
   },
-  "homepage": "https://github.com/OleConsignado/helm-apply#readme",  
+  "homepage": "https://github.com/OleConsignado/helm-apply#readme",
   "dependencies": {
     "command-line-args": "^5.0.2",
-    "js-yaml": "^3.12.0",
+    "js-yaml": "^3.13.1",
     "vcs-getter": "^1.0.9",
     "vcs-hosted-k8s-helm-installer": "^2.0.3"
   }
