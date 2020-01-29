@@ -1,6 +1,6 @@
 {
   "name": "helm-apply",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "bin": {
     "helm-apply": "bin/helm-apply.js"
@@ -21,7 +21,7 @@
   "dependencies": {
     "command-line-args": "^5.0.2",
     "js-yaml": "^3.13.1",
-    "vcs-getter": "^1.0.9",
-    "vcs-hosted-k8s-helm-installer": "^2.0.3"
+    "vcs-getter": "^1.0.11",
+    "vcs-hosted-k8s-helm-installer": "^2.0.4"
   }
 }

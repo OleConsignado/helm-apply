@@ -2,10 +2,8 @@ language: node_js
 node_js:
 - 8.9.4
 deploy:
-  provider: npm
-  email: matheusneder@gmail.com
-  api_key:
-    secure: dq5s53PgNLYzWwFS3SAimW/fmCIoAxiIBCtQOIvHX10qJ7cywBYTa6AdRU+H1Z1WjUwjK+k80rEn9MuDyBV7I70pDtczz4jmSrm8znS8xTYaRSTTHGAxwfCR2dymIJpGoxVT+/wESZnLVnlwIlpQL2cjsUlsranOU8TgEC+wCviWMJlYWWCGz+QdruhwLMiHnod6kKqrdNgAoZNReFoWFgWcq3BgJtEdi5GX1qNXlenIX9QTgrZPrJLA/xBM3dBYKdlwumR6hqk6ZVJvqGjSOx8+Zs/oOyiohojznQXazFTiK4sK+NIuLjjgqUc4TUkQvJc7XlUqWlQk+jVFh3VbARDy94WBy4lNRvwmk4xli8ftz9ruliGyx68YJh3OfMbFNbVwTYL1Q6H/p2WMBWmll9PLikkcjQ4c+BhaEZMqieRitm/DgJAcrH4Cnl1WQBchbihk8a3NfKeYSEzmKmB9nmCeI54wF9xAJ/NoMX8ee5eU9ecWPocASgVIHjYEZCFDM5Ju/cvfCfriB2c/Sy/THRrVIPELxFfLmPtymmbnv2fNCtE5ybPO12O6aDP63wM+0RzIjq7sWkygyJ23tAGqf9QWfJf5onHvpcHAnWAEk2Gu8JXMir6YktCDc9vPGPSfNSlY2yIU15nS1B5ISmB6N9fV5g9Ek7kTWVeNcFzLPgk=
+  provider: script
+  script: dpl --provider=npm --email=$NPM_EMAIL --api-key=$NPM_TOKEN
   on:
     tags: true
     repo: OleConsignado/helm-apply
